@@ -1,0 +1,21 @@
+@media (min-width: 991.98px) {
+  .main-panel{
+      padding-left: 240px !important;
+    }
+  }
+
+  @media (max-width: 990px) {
+    #sidebarMenu {
+      display: none !important;
+    }
+  }
+
+
+ /* .card{
+    min-width:500px !important;
+ }  */
+
+ .img-sm{
+  width: 30px;
+  height: 30px;
+ }

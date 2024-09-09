@@ -1,0 +1,8 @@
+footer {
+    background: #000;
+    color: white;
+    position: relative !important ;
+    bottom: 0 !important;
+    width: 100% !important ;
+    z-index: 1 !important;
+  }

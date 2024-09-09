@@ -1,0 +1,111 @@
+<header class="">
+  <!-- Sidebar -->
+  <nav id="sidebarMenu" class="d-lg-block sidebar collapse bg-white" *ngIf="showSidebar" style="height:auto; position:fixed;">
+    <div class="pt-4" style=" z-index:-1; position:relative;">
+      <div class="list-group list-group-flush mx-3 mt-0">
+        <a class="list-group-item list-group-item-action py-2" 
+           data-mdb-ripple-init [ngClass]="{ 'active': activeLink === 'users' }" 
+           (click)="setActiveLink('users')" aria-current="true" 
+           style="z-index:1; position:relative;">
+          <i class="fas fa-tachometer-alt fa-fw me-3"></i> <span>Users</span>
+        </a>
+  
+        <a href="javascript:void(0);" class="list-group-item list-group-item-action py-2" 
+           data-mdb-ripple-init [ngClass]="{ 'active': activeLink === 'donars' }" 
+           (click)="setActiveLink('donars')" 
+           style="z-index:1; position:relative;">
+          <i class="fas fa-chart-area fa-fw me-3"></i><span>Donars</span>
+        </a>
+  
+        <a href="javascript:void(0);" class="list-group-item list-group-item-action py-2" 
+           data-mdb-ripple-init [ngClass]="{ 'active': activeLink === 'requests' }" 
+           (click)="setActiveLink('requests')" 
+           style="z-index:1; position:relative;">
+          <i class="fas fa-chart-area fa-fw me-3"></i><span>Requests</span>
+        </a>
+  
+        <a href="javascript:void(0);" class="list-group-item list-group-item-action py-2" 
+           data-mdb-ripple-init [ngClass]="{ 'active': activeLink === 'blood-details' }" 
+           (click)="setActiveLink('blood-details')" 
+           style="z-index:1; position:relative;">
+          <i class="fas fa-chart-area fa-fw me-3"></i><span>Blood Details</span>
+        </a>
+        <a href="javascript:void(0);" class="list-group-item list-group-item-action py-2" 
+        data-mdb-ripple-init [ngClass]="{ 'active': activeLink === 'addadmin' }" 
+        (click)="setActiveLink('addadmin')" 
+        style="z-index:1; position:relative;">
+       <i class="fas fa-chart-area fa-fw me-3"></i><span>Add Admin</span>
+     </a>
+      </div>
+    </div>
+  </nav>
+  
+  <!-- Sidebar -->
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-body-tertiary " style="position: relative; ">
+    <!-- Container wrapper -->
+   
+    <div class="container-fluid">
+      <!-- Toggle button -->
+      <button
+        data-mdb-collapse-init
+        class="navbar-toggler"
+        type="button"
+        data-mdb-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <i class="fas fa-bars"></i>
+      </button>
+  
+      <!-- Collapsible wrapper -->
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <!-- Navbar brand -->
+        <a class="navbar-brand mt-2 mt-lg-0" >
+          <img
+            src="../../../assets/logo.png"
+            width="50"
+            height="50"
+            alt="MDB Logo"
+            loading="lazy"
+            style="color: white;"
+          />
+        </a>
+        <!-- Left links -->
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/" >Home</a>
+          </li>
+          
+          <!-- Show Login and Register when not logged in -->
+          <li class="nav-item" *ngIf="!isLoggedIn">
+            <a class="nav-link" routerLink='/login'>Login</a>
+          </li>
+          <li class="nav-item" *ngIf="!isLoggedIn">
+            <a class="nav-link" routerLink='/register'>Register</a>
+          </li>
+        
+          <!-- Show Logout when logged in -->
+          <li class="nav-item" *ngIf="isLoggedIn">
+            <a class="nav-link" (click)="logout()">Logout</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link"  routerLink='/bloodrequest'>Request For Blood</a>
+          </li>
+        </ul>
+        <!-- Left links -->
+      </div>
+      <!-- Collapsible wrapper -->
+  
+      <!-- Right elements -->
+     
+      <!-- Right elements -->
+    </div>
+    <!-- Container wrapper -->
+  </nav>
+  <!-- Navbar -->
+</header>
+<router-outlet></router-outlet>

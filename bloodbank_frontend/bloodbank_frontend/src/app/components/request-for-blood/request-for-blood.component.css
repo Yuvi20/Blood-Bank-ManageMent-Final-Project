@@ -1,0 +1,18 @@
+.body{
+    background-image: url('../../../assets/loginbg.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+
+}
+
+
+.form-label{
+    color: white !important;
+   }
+
+
+input[type="checkbox"]{
+  background:  #f66e6e !important;
+  border-color: #f66e6e !important;
+}

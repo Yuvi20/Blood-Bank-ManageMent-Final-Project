@@ -1,0 +1,107 @@
+<div style="width: 600px; display: flex; flex-direction: column;margin: 0 auto; margin-top: 10%;">
+    <ul class="nav nav-pills nav-justified mb-3" id="ex1" role="tablist">
+        <li class="nav-item" role="presentation">
+            <a class="nav-link active" id="tab-login" data-mdb-pill-init href="#pills-login" role="tab"
+                aria-controls="pills-login" aria-selected="true" routerLink="/login">Login</a>
+        </li>
+        <li class="nav-item" role="presentation">
+            <a class="nav-link" id="tab-register" data-mdb-pill-init href="#pills-register" role="tab"
+                aria-controls="pills-register" aria-selected="false" routerLink="/register">Register</a>
+        </li>
+    </ul>
+    <!-- Pills navs -->
+
+    <!-- Pills content -->
+    <div class="tab-content">
+        <div class="tab-pane fade show active" id="pills-login" role="tabpanel" aria-labelledby="tab-login">
+            <form [formGroup]="updatePassword">
+                <div class="text-center mb-3">
+                    <p>Sign in with:</p>
+                    <button type="button" data-mdb-button-init data-mdb-ripple-init
+                        class="btn btn-link btn-floating mx-1">
+                        <i class="fab fa-facebook-f"></i>
+                    </button>
+
+                    <button type="button" data-mdb-button-init data-mdb-ripple-init
+                        class="btn btn-link btn-floating mx-1">
+                        <i class="fab fa-google"></i>
+                    </button>
+
+                    <button type="button" data-mdb-button-init data-mdb-ripple-init
+                        class="btn btn-link btn-floating mx-1">
+                        <i class="fab fa-twitter"></i>
+                    </button>
+
+                    <button type="button" data-mdb-button-init data-mdb-ripple-init
+                        class="btn btn-link btn-floating mx-1">
+                        <i class="fab fa-github"></i>
+                    </button>
+                </div>
+
+                <p class="text-center">or:</p>
+
+                <!-- Email input -->
+                <div data-mdb-input-init class="form-outline mb-4">
+                    <input type="email" id="loginName" class="form-control" formControlName="loginName" />
+                    <label class="form-label" for="loginName">Email or username</label>
+
+                </div>
+                <small *ngIf="loginName && loginName.invalid && (loginName.dirty ||loginName.touched)"
+                    class="text-danger">
+                    <div *ngIf="loginName && loginName.errors?.['required']">UserName is required</div>
+
+                </small>
+
+                <!-- Password input -->
+                <div data-mdb-input-init class="form-outline mb-4">
+                    <input type="password" id="loginPassword" class="form-control" formControlName="password" />
+                    <label class="form-label" for="password">Password</label>
+                </div>
+                <small *ngIf="password && password.invalid && (password.dirty ||password.touched)" class="text-danger">
+                    <div *ngIf="password && password.errors?.['required']">password is required</div>
+
+                </small>
+                <div data-mdb-input-init class="form-outline mb-4">
+                    <input type="password" id="loginPassword" class="form-control" formControlName="cPassword" />
+                    <label class="form-label" for="cPassword">cPassword</label>
+                </div>
+                <small *ngIf="cPassword && cPassword.invalid && (cPassword.dirty || cPassword.touched)" class="text-danger">
+                    <div *ngIf="cPassword && cPassword.errors?.['required']">cPassword is required</div>
+                </small>
+                <span class="error text-danger" *ngIf="cPassword?.errors?.['passwordMismatch']">
+                    Password and Confirm Password do not match
+                </span>
+
+
+
+
+                <!-- 2 column grid layout -->
+                <div class="row mb-4">
+                    <div class="col-md-6 d-flex justify-content-center">
+                        <!-- Checkbox -->
+                        <div class="form-check mb-3 mb-md-0">
+                            <input class="form-check-input" type="checkbox" value="" id="loginCheck" checked />
+                            <label class="form-check-label" for="loginCheck"> Remember me </label>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 d-flex justify-content-center">
+                        <!-- Simple link -->
+                        <a href="#!">Forgot password?</a>
+                    </div>
+                </div>
+
+                <!-- Submit button -->
+                <button type="submit" [disabled]="updatePassword.invalid" data-mdb-button-init data-mdb-ripple-init
+                    class="btn btn-primary btn-block mb-4" (click)="onSubmit()">Sign in</button>
+
+                <!-- Register buttons -->
+                <div class="text-center">
+                    <p>Not a member? <a href="#!" routerLink="/register"> Register</a></p>
+
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- Pills content -->
+</div>

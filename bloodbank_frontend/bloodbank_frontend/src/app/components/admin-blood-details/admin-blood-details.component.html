@@ -1,0 +1,95 @@
+<div class="main-panel">
+    <div class="content-wrapper">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">Data table</h4>
+          <button class="btn btn-outline-primary" style="position: absolute; right: 10%; top: 8%;" data-mdb-ripple-init data-mdb-modal-init data-mdb-target="#exampleModal" (click)="addBlood()" >Add Blood</button>
+          <div class="row">
+            <div class="col-12">
+              <div class="table-responsive">
+                <table id="order-listing" class="table">
+                  <thead>
+                    <tr>
+                      <th>Id</th>
+                      <th>Blood Group</th>
+                      <th>Units Available</th>
+                      <th>No Of Donors</th>
+                      <th>Details</th>
+                      <!-- <th class="text-center">Action</th> -->
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let userdata of usersData">
+                      <td>{{ userdata.id }}</td>
+                      <td>{{ userdata.bloodGroup }}</td>
+                      <td>{{ userdata.unitsAvailable }}</td>
+                      <td>{{ userdata.noOfDonors }}</td>
+                     
+                      <td>
+                        <button class="btn btn-outline-primary" data-mdb-ripple-init data-mdb-modal-init data-mdb-target="#exampleModal" (click)="viewUser(userdata)">View</button>
+                      </td>
+                      <!-- <td class="">
+                        <button class="btn btn-outline-success" data-mdb-ripple-init data-mdb-modal-init data-mdb-target="#exampleModal" >Edit</button>
+  
+                      </td> -->
+                      <!-- <td class="" >
+                        <button class="btn btn-outline-danger" >Delete</button>
+                      </td> -->
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel" *ngIf="showAddButton">Add Blood</h5>
+  
+  
+          <button type="button" class="btn-close" data-mdb-ripple-init data-mdb-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="userFormData">
+            <div data-mdb-input-init class="form-outline mb-4">
+              <input type="text" id="bloodGroup" class="form-control" formControlName="bloodGroup" />
+              <label class="form-label" for="bloodGroup">Blood Group</label>
+            </div>
+            <span *ngIf="userFormData.controls['bloodGroup'].invalid && (userFormData.controls['bloodGroup'].touched || userFormData.controls['bloodGroup'].dirty)">
+              <span class="error text-danger" *ngIf="userFormData.controls['bloodGroup'].errors?.['required']">This field is required</span>
+            </span>
+          
+            <div data-mdb-input-init class="form-outline mb-4">
+              <input type="number" id="unitsAvailable" class="form-control" formControlName="unitsAvailable" />
+              <label class="form-label" for="unitsAvailable">Units Available</label>
+            </div>
+            <span *ngIf="userFormData.controls['unitsAvailable'].invalid && (userFormData.controls['unitsAvailable'].touched || userFormData.controls['unitsAvailable'].dirty)">
+              <span class="error text-danger" *ngIf="userFormData.controls['unitsAvailable'].errors?.['required']">This field is required</span>
+            </span>
+          
+            <div data-mdb-input-init class="form-outline mb-4">
+              <input type="number" id="noOfDonors" class="form-control" formControlName="noOfDonors" />
+              <label class="form-label" for="noOfDonors">Number of Donors</label>
+            </div>
+            <span *ngIf="userFormData.controls['noOfDonors'].invalid && (userFormData.controls['noOfDonors'].touched || userFormData.controls['noOfDonors'].dirty)">
+              <span class="error text-danger" *ngIf="userFormData.controls['noOfDonors'].errors?.['required']">This field is required</span>
+            </span>
+          </form>
+          
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-danger" data-mdb-ripple-init data-mdb-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-outline-success" data-mdb-ripple-init *ngIf="showUpdateButton"  [disabled]="userFormData.invalid"  >Save changes</button>
+          <button type="button" class="btn btn-outline-success" data-mdb-ripple-init *ngIf="showAddButton" (click)="addBloodData(userFormData.value)" [disabled]="userFormData.invalid">Add Blood</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  

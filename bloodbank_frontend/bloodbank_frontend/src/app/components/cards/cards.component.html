@@ -1,0 +1,182 @@
+
+<div class="main-panel">
+  <div class="content-wrapper">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Data table</h4>
+        <div class="row">
+          <div class="col-12">
+            <div class="table-responsive">
+              <table id="order-listing" class="table">
+                <thead>
+                  <tr>
+                    <th>Id</th>
+                    <th>User </th>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Gender</th>
+                    <th>Mobile</th>
+                    <th>Address</th>
+                    <th>Details</th>
+                    <th colspan="2" class="text-center">Action</th>
+                  </tr>
+                </thead>
+                <tbody *ngFor="let userdata of usersData">
+                  <tr>
+                    <td>{{userdata.userId}}</td>
+                    <td><img src="../../assets/1.png" alt="image" class="img-sm mr-3 rounded-circle"></td>
+                    <td>{{userdata.name}}</td>
+                    <td>{{userdata.age}}</td>
+                    <td>{{userdata.gender}}</td>
+                    <td>{{userdata.mobile}}</td>
+                    <td>{{userdata.address}}</td>
+
+                    <!-- <button type="button" class="btn btn-primary" data-mdb-ripple-init data-mdb-modal-init data-mdb-target="#exampleModal">
+                      Launch demo modal
+                    </button> -->
+                    <td>
+                      <button class="btn btn-outline-primary"  data-mdb-ripple-init data-mdb-modal-init data-mdb-target="#exampleModal" (click)="viewUser(userdata)">View</button>
+                    </td>
+                    <!-- <td class="d-sm-flex " style="justify-content: space-between;"> -->
+                      <!-- <button type="button" class="btn btn-primary" data-mdb-ripple-init data-mdb-modal-init data-mdb-target="#exampleModal">
+                        Launch demo modal
+                      </button> -->
+                      <!-- <button class="btn btn-outline-success" data-mdb-ripple-init data-mdb-modal-init data-mdb-target="#exampleModal" (click)="openModel(userdata)">Edit</button>
+                      <button class="btn btn-outline-danger" (click)="deleteUser(userdata)" >Delete</button> -->
+                      <td>
+                        <button class="btn btn-outline-success" data-mdb-ripple-init data-mdb-modal-init data-mdb-target="#exampleModal" (click)="openModel(userdata)">Edit</button>
+                    </td>
+                    <td>
+                      <button class="btn btn-outline-danger" (click)="deleteUser(userdata)" >Delete</button>
+                    </td>
+                  </tr>
+                 <!-- <app-userdatacontent ></app-userdatacontent> -->
+       
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- content-wrapper ends -->
+  <!-- partial:../../partials/_footer.html -->
+ 
+  <!-- partial -->
+</div>
+
+
+<!-- Model -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Update User</h5>
+        <button type="button" class="btn-close" data-mdb-ripple-init data-mdb-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+        <form method="post" [formGroup]="userFormData">
+          <div data-mdb-input-init class="form-outline mb-4"  >
+            <input type="text" id="registerName" class="form-control" formControlName="registerName"  />
+            <label class="form-label" for="registerName">Name</label>
+          </div>
+       
+          <span for="form-label"
+            *ngIf="userFormData.controls['registerName'].invalid && (userFormData.controls['registerName'].touched ||userFormData.controls['registerName'].dirty )">
+            <span class="error text-danger" *ngIf="userFormData.controls['registerName'].errors?.['required']">This
+              Field is required</span>
+            <span class="error text-danger" *ngIf="userFormData.controls['registerName'].errors?.['minlength']">Name
+              must be more than 3 characters</span>
+          </span>
+
+          <div data-mdb-input-init class="form-outline mb-4">
+              <input type="number" id="registerUserAge" class="form-control" formControlName="registerAge" />
+              <label class="form-label" for="registerUserAge" [ngClass]="{ 'text-danger': showError }">Age</label>
+          </div>
+          <span for="form-label"
+              *ngIf="userFormData.controls['registerAge'].invalid && (userFormData.controls['registerAge'].touched ||userFormData.controls['registerAge'].dirty )">
+              <span class="error text-danger" *ngIf="userFormData.controls['registerAge'].errors?.['required']">This
+                  Field is required</span>
+              <span class="error text-danger" *ngIf="userFormData.controls['registerAge'].errors?.['min']">Age must be
+                  more than 18</span>
+          </span>
+
+
+          <div data-mdb-input-init class="form-outline mb-4">
+              <input type="gender" id="registerUserGender" class="form-control"
+                  formControlName="registerGender" />
+              <label class="form-label" for="registerUserGender"
+                  [ngClass]="{ 'text-danger': shwErrGender }">Gender</label>
+          </div>
+          <span for="form-label"
+              *ngIf="userFormData.controls['registerGender'].invalid && (userFormData.controls['registerGender'].touched ||userFormData.controls['registerGender'].dirty )">
+              <span class="error text-danger"
+                  *ngIf="userFormData.controls['registerGender'].errors?.['required']">This Field is required</span>
+          </span>
+
+
+          <div data-mdb-input-init class="form-outline mb-4">
+              <input type="text" id="registerUsermobile" class="form-control" formControlName="registerMobile"
+                  pattern="[6-9][0-9]{9}" />
+              <label class="form-label" for="registerUserAge"
+                  [ngClass]="{ 'text-danger': showErrorMobile }">Mobile</label>
+          </div>
+          <span
+              *ngIf="userFormData.controls['registerMobile'].invalid && (userFormData.controls['registerMobile'].touched || userFormData.controls['registerMobile'].dirty)">
+              <span class="error text-danger"
+                  *ngIf="userFormData.controls['registerMobile'].errors?.['required']">This Field is required</span>
+              <span class="error text-danger"
+                  *ngIf="userFormData.controls['registerMobile'].errors?.['pattern']">Invalid Mobile NUmber</span>
+          </span>
+
+
+          <div data-mdb-input-init class="form-outline mb-4">
+              <input type="email" id="registerEmail" class="form-control" formControlName="registerEmail" />
+
+              <label class="form-label" for="registerEmail"
+                  [ngClass]="{ 'text-danger': shwErrEmail }">E-mail</label>
+          </div>
+          <span for="form-label"
+              *ngIf="userFormData.controls['registerEmail'].invalid && (userFormData.controls['registerEmail'].touched ||userFormData.controls['registerEmail'].dirty )">
+              <span class="error text-danger" *ngIf="userFormData.controls['registerEmail'].errors?.['required']">This
+                  Field is required</span>
+              <span class="error text-danger" *ngIf="userFormData.controls['registerEmail'].errors?.['email']">Enter
+                  Valid E-mail</span>
+          </span>
+
+        
+
+
+
+          <div data-mdb-input-init class="form-outline mb-4">
+              <input type="address" id="registerUserAddress" class="form-control"
+                  formControlName="registerAddress" />
+              <label class="form-label" for="registerUserAddress"
+                  [ngClass]="{ 'text-danger': showError }">Address</label>
+              </div>
+              <span for="form-label"
+                  *ngIf="userFormData.controls['registerAddress'].invalid && (userFormData.controls['registerAddress'].touched ||userFormData.controls['registerAddress'].dirty )">
+                  <span class="error text-danger"
+                      *ngIf="userFormData.controls['registerAddress'].errors?.['required']">This Field is
+                      required</span>
+              </span>
+          
+
+
+
+
+
+      </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-danger" data-mdb-ripple-init data-mdb-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-outline-success" data-mdb-ripple-init 
+        (click)="updateUser(userFormData.value)" 
+        *ngIf="showUpdateButton">Save changes</button>
+      
+      </div>
+    </div>
+  </div>
+</div>

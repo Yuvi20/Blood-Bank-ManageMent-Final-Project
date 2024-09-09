@@ -1,0 +1,74 @@
+.text-danger{
+    position: relative !important;
+    top: -25px !important;
+    left: 10px !important;
+    /* color: rgb(255, 255, 255) !important; */
+}
+.body{
+    background-image: url("../../../assets/loginbg.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+
+}
+input[type="checkbox"]{
+    background-color: #f8432f !important;
+    color: #ffffff !important;
+    border:2px solid #f74a4a !important;
+}
+
+/* .form-outline input[type=email]{
+
+    border: 1px solid white;
+    background: #000;
+   
+    
+   
+/* }  */
+
+/* .form-outline:focus{
+    outline: none !important;
+    border-color: #5cb85c !important; 
+    box-shadow: none !important; 
+}
+input#loginName.form-control:focus {
+    outline: none !important; 
+    border-color: #5cb85c !important;
+    box-shadow: none !important; 
+  }
+.form-control:focus{
+   
+    border-style: none !important;
+    border: 2px solid #f8432f !important;
+    color: white !important;
+
+
+} */
+
+/* .form-outline .form-control:focus~.form-notch .form-notch-leading {
+    border-top: 2px solid #cceedd !important;
+    border-bottom: 2px solid #cceedd !important;
+    border-left: 2px solid #cceedd !important;
+} 
+
+ .form-outline .form-control:focus~.form-notch .form-notch-trailing {
+    border-top: 2px solid #cceedd !important;
+    border-right: 2px solid #cceedd !important;
+    border-bottom: 2px solid #cceedd !important;
+}  */
+
+ .form-outline .form-control:focus~.form-notch .form-notch-middle {
+    border-top-width: 0 !important;
+    border-bottom-width: 2px solid #ffffff !important;
+} 
+
+
+.form-label {
+    color: #ffffff !important;
+    border: #f8432f !important;
+  }
+.nav-link.active{
+    background-color: #f8432f !important;
+    color: #ffffff !important;
+   
+}

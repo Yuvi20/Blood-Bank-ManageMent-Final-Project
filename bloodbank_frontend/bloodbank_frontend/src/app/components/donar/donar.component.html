@@ -1,0 +1,239 @@
+<!-- <div style="width: 100%;height: 100%; top: 0; padding-top: 10%; padding-bottom: 10%;  " class="body ">
+    <div style="width: 600px; display: flex; flex-direction: column;margin: 0 auto;  background:transparent ; backdrop-filter: blur(10px); border-radius: 5px; padding: 10px; ">
+        <ul class="nav nav-pills nav-justified mb-3" id="ex1" role="tablist">
+            <li class="nav-item" role="presentation">
+                <a class="nav-link " id="tab-login" data-mdb-pill-init href="#pills-login" role="tab"
+                    aria-controls="pills-login" aria-selected="true" routerLink="/login">Login</a>
+            </li>
+            <li class="nav-item" role="presentation">
+                <a class="nav-link active" id="tab-register" data-mdb-pill-init href="#pills-register" role="tab"
+                    aria-controls="pills-register" aria-selected="false" routerLink="/register">Register</a>
+            </li>
+        </ul>
+        <div class="tab-content" style="max-width: 600px;">
+            <div class="tab-pane fade show active" id="pills-register" role="tabpanel" aria-labelledby="tab-register">
+    
+                <form method="post" [formGroup]="userForm">
+                    <div class="text-center mb-3">
+                        <p>Sign up with:</p>
+                        <button type="button" data-mdb-button-init data-mdb-ripple-init
+                            class="btn btn-link btn-floating mx-1">
+                            <i class="fab fa-facebook-f " style="color: rgb(248, 38, 38);"></i>
+                        </button>
+    
+                        <button type="button" data-mdb-button-init data-mdb-ripple-init
+                            class="btn btn-link btn-floating mx-1">
+                            <i class="fab fa-google" style="color: rgb(248, 38, 38);"></i>
+                        </button>
+    
+                        <button type="button" data-mdb-button-init data-mdb-ripple-init
+                            class="btn btn-link btn-floating mx-1">
+                            <i class="fab fa-twitter" style="color: rgb(248, 38, 38);"></i>
+                        </button>
+    
+                        <button type="button" data-mdb-button-init data-mdb-ripple-init
+                            class="btn btn-link btn-floating mx-1">
+                            <i class="fab fa-github" style="color: rgb(248, 38, 38);"></i>
+                        </button>
+                    </div>
+    
+                    <p class="text-center">or:</p>
+    
+
+    
+                    <div data-mdb-input-init class="form-outline mb-4">
+                        <input type="number" id="registerUserAge" class="form-control" formControlName="registerAge" />
+                        <label class="form-label" for="registerUserAge" [ngClass]="{ 'text-danger': showError }">Age</label>
+                    </div>
+                    <span for="form-label"
+                        *ngIf="userForm.controls['registerAge'].invalid && (userForm.controls['registerAge'].touched ||userForm.controls['registerAge'].dirty )">
+                        <span class="error text-danger" *ngIf="userForm.controls['registerAge'].errors?.['required']">This
+                            Field is required</span>
+                        <span class="error text-danger" *ngIf="userForm.controls['registerAge'].errors?.['min']">Age must be
+                            more than 18</span>
+                    </span>
+    
+    
+                    <div data-mdb-input-init class="form-outline mb-4">
+                        <input type="gender" id="registerUserGender" class="form-control"
+                            formControlName="registerGender" />
+                        <label class="form-label" for="registerUserGender"
+                            [ngClass]="{ 'text-danger': shwErrGender }">Gender</label>
+                    </div>
+                    <span for="form-label"
+                        *ngIf="userForm.controls['registerGender'].invalid && (userForm.controls['registerGender'].touched ||userForm.controls['registerGender'].dirty )">
+                        <span class="error text-danger"
+                            *ngIf="userForm.controls['registerGender'].errors?.['required']">This Field is required</span>
+                    </span>
+    
+    
+                    <div data-mdb-input-init class="form-outline mb-4">
+                        <input type="text" id="registerUsermobile" class="form-control" formControlName="registerMobile"
+                            pattern="[6-9][0-9]{9}" />
+                        <label class="form-label" for="registerUserAge"
+                            [ngClass]="{ 'text-danger': showErrorMobile }">Mobile</label>
+                    </div>
+                    <span
+                        *ngIf="userForm.controls['registerMobile'].invalid && (userForm.controls['registerMobile'].touched || userForm.controls['registerMobile'].dirty)">
+                        <span class="error text-danger"
+                            *ngIf="userForm.controls['registerMobile'].errors?.['required']">This Field is required</span>
+                        <span class="error text-danger"
+                            *ngIf="userForm.controls['registerMobile'].errors?.['pattern']">Invalid Mobile NUmber</span>
+                    </span>
+    
+    
+                    <div data-mdb-input-init class="form-outline mb-4">
+                        <input type="email" id="registerEmail" class="form-control" formControlName="registerEmail" />
+    
+                        <label class="form-label" for="registerEmail"
+                            [ngClass]="{ 'text-danger': shwErrEmail }">E-mail</label>
+                    </div>
+                    <span for="form-label"
+                        *ngIf="userForm.controls['registerEmail'].invalid && (userForm.controls['registerEmail'].touched ||userForm.controls['registerEmail'].dirty )">
+                        <span class="error text-danger" *ngIf="userForm.controls['registerEmail'].errors?.['required']">This
+                            Field is required</span>
+                        <span class="error text-danger" *ngIf="userForm.controls['registerEmail'].errors?.['email']">Enter
+                            Valid E-mail</span>
+                    </span>
+
+         
+    
+    
+       
+                  
+    
+    
+    
+                    <div data-mdb-input-init class="form-outline mb-4">
+                        <input type="address" id="registerUserAddress" class="form-control"
+                            formControlName="registerAddress" />
+                        <label class="form-label" for="registerUserAddress"
+                            [ngClass]="{ 'text-danger': showError }">Address</label>
+                        </div>
+                        <span for="form-label"
+                            *ngIf="userForm.controls['registerAddress'].invalid && (userForm.controls['registerAddress'].touched ||userForm.controls['registerAddress'].dirty )">
+                            <span class="error text-danger"
+                                *ngIf="userForm.controls['registerAddress'].errors?.['required']">This Field is
+                                required</span>
+                        </span>
+                    
+                    <div data-mdb-input-init class="form-outline mb-4">
+                        <input type="text" id="registerBloodGroup" class="form-control"
+                            formControlName="registerBloodGroup" />
+                        <label class="form-label" for="registerBloodGroup"
+                            [ngClass]="{ 'text-danger': showError }">Blood Group</label>
+                        </div>
+                        <span for="form-label"
+                            *ngIf="userForm.controls['registerBloodGroup'].invalid && (userForm.controls['registerBloodGroup'].touched ||userForm.controls['registerBloodGroup'].dirty )">
+                            <span class="error text-danger"
+                                *ngIf="userForm.controls['registerBloodGroup'].errors?.['required']">This Field is
+                                required</span>
+                        </span>
+                    
+                    <div data-mdb-input-init class="form-outline mb-4">
+                        <input type="text" id="registerCity" class="form-control"
+                            formControlName="registerCity" />
+                        <label class="form-label" for="registerCity"
+                            [ngClass]="{ 'text-danger': showError }">City</label>
+                        </div>
+                        <span for="form-label"
+                            *ngIf="userForm.controls['registerCity'].invalid && (userForm.controls['registerCity'].touched ||userForm.controls['registerCity'].dirty )">
+                            <span class="error text-danger"
+                                *ngIf="userForm.controls['registerCity'].errors?.['required']">This Field is
+                                required</span>
+                        </span>
+                    
+                    <div data-mdb-input-init class="form-outline mb-4">
+                        <input type="text" id="registerDate" class="form-control"
+                            formControlName="registerDate" />
+                        <label class="form-label" for="registerDate"
+                            [ngClass]="{ 'text-danger': showError }">Date</label>
+                        </div>
+                        <span for="form-label"
+                            *ngIf="userForm.controls['registerDate'].invalid && (userForm.controls['registerDate'].touched ||userForm.controls['registerDate'].dirty )">
+                            <span class="error text-danger"
+                                *ngIf="userForm.controls['registerDate'].errors?.['required']">This Field is
+                                required</span>
+                        </span>
+                    
+                    <div data-mdb-input-init class="form-outline mb-4">
+                        <input type="text" id="registerDisease" class="form-control"
+                            formControlName="registerDisease" />
+                        <label class="form-label" for="registerDisease"
+                            [ngClass]="{ 'text-danger': showError }">Disease</label>
+                        </div>
+                        <span for="form-label"
+                            *ngIf="userForm.controls['registerDisease'].invalid && (userForm.controls['registerDisease'].touched ||userForm.controls['registerDisease'].dirty )">
+                            <span class="error text-danger"
+                                *ngIf="userForm.controls['registerDisease'].errors?.['required']">This Field is
+                                required</span>
+                        </span>
+                    
+                    <div data-mdb-input-init class="form-outline mb-4">
+                        <input type="text" id="registerFname" class="form-control"
+                            formControlName="registerFname" />
+                        <label class="form-label" for="registerFname"
+                            [ngClass]="{ 'text-danger': showError }">First Name</label>
+                        </div>
+                        <span for="form-label"
+                            *ngIf="userForm.controls['registerFname'].invalid && (userForm.controls['registerFname'].touched ||userForm.controls['registerFname'].dirty )">
+                            <span class="error text-danger"
+                                *ngIf="userForm.controls['registerFname'].errors?.['required']">This Field is
+                                required</span>
+                        </span>
+                    
+                    <div data-mdb-input-init class="form-outline mb-4">
+                        <input type="text" id="registerLname" class="form-control"
+                            formControlName="registerLname" />
+                        <label class="form-label" for="registerLname"
+                            [ngClass]="{ 'text-danger': showError }">Last Name</label>
+                        </div>
+                        <span for="form-label"
+                            *ngIf="userForm.controls['registerLname'].invalid && (userForm.controls['registerLname'].touched ||userForm.controls['registerLname'].dirty )">
+                            <span class="error text-danger"
+                                *ngIf="userForm.controls['registerLname'].errors?.['required']">This Field is
+                                required</span>
+                        </span>
+                    
+                    <div data-mdb-input-init class="form-outline mb-4">
+                        <input type="text" id="registerState" class="form-control"
+                            formControlName="registerState" />
+                        <label class="form-label" for="registerState"
+                            [ngClass]="{ 'text-danger': showError }">State</label>
+                        </div>
+                        <span for="form-label"
+                            *ngIf="userForm.controls['registerState'].invalid && (userForm.controls['registerState'].touched ||userForm.controls['registerState'].dirty )">
+                            <span class="error text-danger"
+                                *ngIf="userForm.controls['registerState'].errors?.['required']">This Field is
+                                required</span>
+                        </span>
+                    
+                    <div data-mdb-input-init class="form-outline mb-4">
+                        <input type="text" id="registerUnitsOfBlood" class="form-control"
+                            formControlName="registerUnitsOfBlood" />
+                        <label class="form-label" for="registerUnitsOfBlood"
+                            [ngClass]="{ 'text-danger': showError }">Units of Blood</label>
+                        </div>
+                        <span for="form-label"
+                            *ngIf="userForm.controls['registerUnitsOfBlood'].invalid && (userForm.controls['registerUnitsOfBlood'].touched ||userForm.controls['registerUnitsOfBlood'].dirty )">
+                            <span class="error text-danger"
+                                *ngIf="userForm.controls['registerUnitsOfBlood'].errors?.['required']">This Field is
+                                required</span>
+                        </span>
+                    
+                    <div class="form-check d-flex justify-content-center mb-4">
+                        <input class="form-check-input me-2" type="checkbox" value="" id="registerCheck" checked style="accent-color: red;"
+                            aria-describedby="registerCheckHelpText" />
+                        <label class="form-check-label" for="registerCheck" style="color: white;">
+                            I have read and agree to the terms
+                        </label>
+                    </div>
+    
+    
+                    <button type="submit" (click)="onSubmit()" data-mdb-button-init data-mdb-ripple-init
+                        class="btn btn-danger btn-block mb-3" [disabled]="userForm.invalid">Sign in</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    </div> -->

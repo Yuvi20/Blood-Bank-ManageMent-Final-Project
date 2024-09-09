@@ -1,0 +1,382 @@
+
+<div style="width: 100%;height: 100%; top: 0; padding-top: 10%; padding-bottom: 10%;  " class="body ">
+<div style="width: 600px; display: flex; flex-direction: column;margin: 0 auto;  background:transparent ; backdrop-filter: blur(10px); border-radius: 5px; padding: 10px; ">
+    <ul class="nav nav-pills nav-justified mb-3" id="ex1" role="tablist">
+        <li class="nav-item" role="presentation">
+            <a class="nav-link " id="tab-login" data-mdb-pill-init href="#pills-login" role="tab"
+                aria-controls="pills-login" aria-selected="true" routerLink="/login">Login</a>
+        </li>
+        <li class="nav-item" role="presentation">
+            <a class="nav-link active" id="tab-register" data-mdb-pill-init href="#pills-register" role="tab"
+                aria-controls="pills-register" aria-selected="false" routerLink="/register">Register</a>
+        </li>
+    </ul>
+    <div class="tab-content" style="max-width: 600px;">
+        <div class="tab-pane fade show active" id="pills-register" role="tabpanel" aria-labelledby="tab-register">
+
+            <form method="post" [formGroup]="userForm">
+                <div class="text-center mb-3">
+                    <p>Sign up with:</p>
+                    <button type="button" data-mdb-button-init data-mdb-ripple-init
+                        class="btn btn-link btn-floating mx-1">
+                        <i class="fab fa-facebook-f " style="color: rgb(248, 38, 38);"></i>
+                    </button>
+
+                    <button type="button" data-mdb-button-init data-mdb-ripple-init
+                        class="btn btn-link btn-floating mx-1">
+                        <i class="fab fa-google" style="color: rgb(248, 38, 38);"></i>
+                    </button>
+
+                    <button type="button" data-mdb-button-init data-mdb-ripple-init
+                        class="btn btn-link btn-floating mx-1">
+                        <i class="fab fa-twitter" style="color: rgb(248, 38, 38);"></i>
+                    </button>
+
+                    <button type="button" data-mdb-button-init data-mdb-ripple-init
+                        class="btn btn-link btn-floating mx-1">
+                        <i class="fab fa-github" style="color: rgb(248, 38, 38);"></i>
+                    </button>
+                </div>
+
+                <p class="text-center">or:</p>
+
+
+                <div data-mdb-input-init class="form-outline mb-4">
+                    <input type="text" id="registerName" class="form-control" formControlName="registerName" />
+                    <label class="form-label" for="registerName">Name</label>
+                </div>
+                <span for="form-label"
+                    *ngIf="userForm.controls['registerName'].invalid && (userForm.controls['registerName'].touched ||userForm.controls['registerName'].dirty )">
+                    <span class="error text-danger" *ngIf="userForm.controls['registerName'].errors?.['required']">This
+                        Field is required</span>
+                    <span class="error text-danger" *ngIf="userForm.controls['registerName'].errors?.['minlength']">Name
+                        must be more than 3 characters</span>
+                </span>
+
+                <div data-mdb-input-init class="form-outline mb-4">
+                    <input type="number" id="registerUserAge" class="form-control" formControlName="registerAge" />
+                    <label class="form-label" for="registerUserAge" [ngClass]="{ 'text-danger': showError }">Age</label>
+                </div>
+                <span for="form-label"
+                    *ngIf="userForm.controls['registerAge'].invalid && (userForm.controls['registerAge'].touched ||userForm.controls['registerAge'].dirty )">
+                    <span class="error text-danger" *ngIf="userForm.controls['registerAge'].errors?.['required']">This
+                        Field is required</span>
+                    <span class="error text-danger" *ngIf="userForm.controls['registerAge'].errors?.['min']">Age must be
+                        more than 18</span>
+                </span>
+
+
+                <div data-mdb-input-init class="form-outline mb-4">
+                    <input type="gender" id="registerUserGender" class="form-control"
+                        formControlName="registerGender" />
+                    <label class="form-label" for="registerUserGender"
+                        [ngClass]="{ 'text-danger': shwErrGender }">Gender</label>
+                </div>
+                <span for="form-label"
+                    *ngIf="userForm.controls['registerGender'].invalid && (userForm.controls['registerGender'].touched ||userForm.controls['registerGender'].dirty )">
+                    <span class="error text-danger"
+                        *ngIf="userForm.controls['registerGender'].errors?.['required']">This Field is required</span>
+                </span>
+
+
+                <div data-mdb-input-init class="form-outline mb-4">
+                    <input type="text" id="registerUsermobile" class="form-control" formControlName="registerMobile"
+                        pattern="[6-9][0-9]{9}" />
+                    <label class="form-label" for="registerUserAge"
+                        [ngClass]="{ 'text-danger': showErrorMobile }">Mobile</label>
+                </div>
+                <span
+                    *ngIf="userForm.controls['registerMobile'].invalid && (userForm.controls['registerMobile'].touched || userForm.controls['registerMobile'].dirty)">
+                    <span class="error text-danger"
+                        *ngIf="userForm.controls['registerMobile'].errors?.['required']">This Field is required</span>
+                    <span class="error text-danger"
+                        *ngIf="userForm.controls['registerMobile'].errors?.['pattern']">Invalid Mobile NUmber</span>
+                </span>
+
+
+                <div data-mdb-input-init class="form-outline mb-4">
+                    <input type="email" id="registerEmail" class="form-control" formControlName="registerEmail" />
+
+                    <label class="form-label" for="registerEmail"
+                        [ngClass]="{ 'text-danger': shwErrEmail }">E-mail</label>
+                </div>
+                <span for="form-label"
+                    *ngIf="userForm.controls['registerEmail'].invalid && (userForm.controls['registerEmail'].touched ||userForm.controls['registerEmail'].dirty )">
+                    <span class="error text-danger" *ngIf="userForm.controls['registerEmail'].errors?.['required']">This
+                        Field is required</span>
+                    <span class="error text-danger" *ngIf="userForm.controls['registerEmail'].errors?.['email']">Enter
+                        Valid E-mail</span>
+                </span>
+
+                <div data-mdb-input-init class="form-outline mb-4">
+                    <input type="password" id="registerPassword" class="form-control"
+                        formControlName="registerPassword" />
+                    <label class="form-label" for="registerPassword" [ngClass]="{ 'text-danger': shwErrPassword }">
+                        Password
+                    </label>
+
+                </div>
+                    <span *ngIf="
+                      userForm.controls['registerPassword'].invalid &&
+                      (userForm.controls['registerPassword'].touched || userForm.controls['registerPassword'].dirty)
+                    ">
+                        <span class="error text-danger"
+                            *ngIf="userForm.controls['registerPassword'].errors?.['required']">
+                            This Field is required
+                        </span>
+                        <span class="error text-danger"
+                            *ngIf="userForm.controls['registerPassword'].errors?.['pattern']">
+                            Password must contain at least 8 characters and combination of letters
+                        </span>
+                    </span>
+     
+
+
+                <div data-mdb-input-init class="form-outline mb-4">
+                    <input type="password" id="registerRepeatPassword" class="form-control"
+                        formControlName="registerConfirmPassword" />
+                    <label class="form-label" for="registerRepeatPassword"
+                        [ngClass]="{ 'text-danger': shwErrConfirmPassword }">
+                        Confirm Password
+                    </label>
+                </div>
+                    <span *ngIf="
+                      userForm.controls['registerConfirmPassword'].invalid &&
+                      (userForm.controls['registerConfirmPassword'].touched || userForm.controls['registerConfirmPassword'].dirty)
+                    ">
+                        <span class="error text-danger"
+                            *ngIf="userForm.controls['registerConfirmPassword'].errors?.['required']">
+                            This Field is required
+                        </span>
+                        <span class="error text-danger" *ngIf="userForm.errors?.['passwordMismatch']">
+                            Password and Confirm Password do not match
+                        </span>
+                    </span>
+              
+
+
+
+                <div data-mdb-input-init class="form-outline mb-4">
+                    <input type="address" id="registerUserAddress" class="form-control"
+                        formControlName="registerAddress" />
+                    <label class="form-label" for="registerUserAddress"
+                        [ngClass]="{ 'text-danger': showError }">Address</label>
+                    </div>
+                    <span for="form-label"
+                        *ngIf="userForm.controls['registerAddress'].invalid && (userForm.controls['registerAddress'].touched ||userForm.controls['registerAddress'].dirty )">
+                        <span class="error text-danger"
+                            *ngIf="userForm.controls['registerAddress'].errors?.['required']">This Field is
+                            required</span>
+                    </span>
+                
+
+
+
+
+                <div class="form-check d-flex justify-content-center mb-4">
+                    <input class="form-check-input me-2" type="checkbox" value="" id="registerCheck" checked style="accent-color: red;"
+                        aria-describedby="registerCheckHelpText" />
+                    <label class="form-check-label" for="registerCheck" style="color: white;">
+                        I have read and agree to the terms
+                    </label>
+                </div>
+
+
+                <button type="submit" (click)="onSubmit()" data-mdb-button-init data-mdb-ripple-init
+                    class="btn btn-danger btn-block mb-3" [disabled]="userForm.invalid">Sign in</button>
+            </form>
+        </div>
+    </div>
+</div>
+</div>
+
+
+<!-- <div class="container" style="display: flex; flex-direction: column; align-items: center; justify-content: center;width: 500px; ">
+    <ul class="nav nav-pills nav-justified mb-3" id="ex1" role="tablist" style="max-width: 800px;">
+      <li class="nav-item" role="presentation">
+        <a class="nav-link " id="tab-login" data-mdb-pill-init [routerLink]="[ '/login']" role="tab"
+          aria-controls="pills-login" aria-selected="true">Login</a>
+      </li>
+      <li class="nav-item" role="presentation">
+        <a class="nav-link active" id="tab-register" data-mdb-pill-init [routerLink]="[ '/register']" role="tab"
+          aria-controls="pills-register" aria-selected="false">Register</a>
+      </li>
+    </ul>
+
+    <div class="tab-content" style="max-width: 600px;">
+        <div class="tab-pane fade show active" id="pills-register" role="tabpanel" aria-labelledby="tab-register">
+
+            <form method="post" [formGroup]="userForm">
+              <div class="text-center mb-3">
+                <p>Sign up with:</p>
+                <button type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-link btn-floating mx-1">
+                  <i class="fab fa-facebook-f"></i>
+                </button>
+    
+                <button type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-link btn-floating mx-1">
+                  <i class="fab fa-google"></i>
+                </button>
+    
+                <button type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-link btn-floating mx-1">
+                  <i class="fab fa-twitter"></i>
+                </button>
+    
+                <button type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-link btn-floating mx-1">
+                  <i class="fab fa-github"></i>
+                </button>
+              </div>
+    
+              <p class="text-center">or:</p>
+    
+    
+                <div data-mdb-input-init class="form-outline mb-4">
+                <input type="text" id="registerName" class="form-control" formControlName="registerName" />
+                <label class="form-label" for="registerName" >Name</label>
+                <span for="form-label"  *ngIf="userForm.controls['registerName'].invalid && (userForm.controls['registerName'].touched ||userForm.controls['registerName'].dirty )">
+                  <span class="error text-danger" *ngIf="userForm.controls['registerName'].errors?.['required']" >This Field is required</span> 
+                  <span class="error text-danger" *ngIf="userForm.controls['registerName'].errors?.['minlength']" >Name must be more than 3 characters</span>
+                </span>
+                </div>
+    
+                <div data-mdb-input-init class="form-outline mb-4">
+                <input type="number" id="registerUserAge" class="form-control" formControlName="registerAge" />
+                <label class="form-label" for="registerUserAge" [ngClass]="{ 'text-danger': showError }">Age</label>
+                <span for="form-label"  *ngIf="userForm.controls['registerAge'].invalid && (userForm.controls['registerAge'].touched ||userForm.controls['registerAge'].dirty )">
+                  <span class="error text-danger" *ngIf="userForm.controls['registerAge'].errors?.['required']" >This Field is required</span> 
+                  <span class="error text-danger" *ngIf="userForm.controls['registerAge'].errors?.['min']" >Age must be more than 18</span>
+                </span>
+                </div>
+    
+                <div data-mdb-input-init class="form-outline mb-4">
+                <input type="gender" id="registerUserGender" class="form-control" formControlName="registerGender" />
+                <label class="form-label" for="registerUserGender"  [ngClass]="{ 'text-danger': shwErrGender }" >Gender</label>
+                <span for="form-label"  *ngIf="userForm.controls['registerGender'].invalid && (userForm.controls['registerGender'].touched ||userForm.controls['registerGender'].dirty )">
+                  <span class="error text-danger" *ngIf="userForm.controls['registerGender'].errors?.['required']" >This Field is required</span> 
+                </span>
+                </div>
+    
+                <div data-mdb-input-init class="form-outline mb-4">
+                  <input
+                    type="text"
+                    id="registerUsermobile"
+                    class="form-control"
+                    formControlName="registerMobile"
+                    pattern="[6-9][0-9]{9}"  
+                  />
+                  <label class="form-label" for="registerUserAge" [ngClass]="{ 'text-danger': showErrorMobile }">Mobile</label>
+                  <span *ngIf="userForm.controls['registerMobile'].invalid && (userForm.controls['registerMobile'].touched || userForm.controls['registerMobile'].dirty)">
+                    <span class="error text-danger" *ngIf="userForm.controls['registerMobile'].errors?.['required']">This Field is required</span>
+                    <span class="error text-danger" *ngIf="userForm.controls['registerMobile'].errors?.['pattern']">Invalid Mobile NUmber</span>
+                  </span>
+                </div>
+                
+    
+                <div data-mdb-input-init class="form-outline mb-4">
+                <input type="email" id="registerEmail" class="form-control" formControlName="registerEmail" />
+                <label class="form-label" for="registerEmail" [ngClass]="{ 'text-danger': shwErrEmail }"  >E-mail</label>
+                <span for="form-label"  *ngIf="userForm.controls['registerEmail'].invalid && (userForm.controls['registerEmail'].touched ||userForm.controls['registerEmail'].dirty )">
+                  <span class="error text-danger" *ngIf="userForm.controls['registerEmail'].errors?.['required']" >This Field is required</span> 
+                  <span class="error text-danger" *ngIf="userForm.controls['registerEmail'].errors?.['email']" >Enter Valid E-mail</span>
+                </span>
+                </div>
+                <div data-mdb-input-init class="form-outline mb-4">
+                  <input
+                    type="password"
+                    id="registerPassword"
+                    class="form-control"
+                    formControlName="registerPassword"
+                  />
+                  <label
+                    class="form-label"
+                    for="registerPassword"
+                    [ngClass]="{ 'text-danger': shwErrPassword }"
+                  >
+                    Password
+                  </label>
+                  <span
+                    *ngIf="
+                      userForm.controls['registerPassword'].invalid &&
+                      (userForm.controls['registerPassword'].touched || userForm.controls['registerPassword'].dirty)
+                    "
+                  >
+                    <span
+                      class="error text-danger"
+                      *ngIf="userForm.controls['registerPassword'].errors?.['required']"
+                    >
+                      This Field is required
+                    </span>
+                    <span
+                      class="error text-danger"
+                      *ngIf="userForm.controls['registerPassword'].errors?.['pattern']"
+                    >
+                      Password must contain at least 8 characters and combination of letters
+                    </span>
+                  </span>
+                </div>
+                
+                
+                <div data-mdb-input-init class="form-outline mb-4">
+                  <input
+                    type="password"
+                    id="registerRepeatPassword"
+                    class="form-control"
+                    formControlName="registerConfirmPassword"
+                  />
+                  <label
+                    class="form-label"
+                    for="registerRepeatPassword"
+                    [ngClass]="{ 'text-danger': shwErrConfirmPassword }"
+                  >
+                    Confirm Password
+                  </label>
+                  <span
+                    *ngIf="
+                      userForm.controls['registerConfirmPassword'].invalid &&
+                      (userForm.controls['registerConfirmPassword'].touched || userForm.controls['registerConfirmPassword'].dirty)
+                    "
+                  >
+                    <span
+                      class="error text-danger"
+                      *ngIf="userForm.controls['registerConfirmPassword'].errors?.['required']"
+                    >
+                      This Field is required
+                    </span>
+                    <span
+                      class="error text-danger"
+                      *ngIf="userForm.errors?.['passwordMismatch']"
+                    >
+                      Password and Confirm Password do not match
+                    </span>
+                  </span>
+                </div>
+                
+                
+    
+                <div data-mdb-input-init class="form-outline mb-4">
+                <input type="address" id="registerUserAddress" class="form-control" formControlName="registerAddress" />
+                <label class="form-label" for="registerUserAddress" [ngClass]="{ 'text-danger': showError }" >Address</label>
+                <span for="form-label"  *ngIf="userForm.controls['registerAddress'].invalid && (userForm.controls['registerAddress'].touched ||userForm.controls['registerAddress'].dirty )">
+                  <span class="error text-danger" *ngIf="userForm.controls['registerAddress'].errors?.['required']" >This Field is required</span> 
+                </span>
+                </div>
+    
+    
+    
+                Checkbox  
+              <div class="form-check d-flex justify-content-center mb-4">
+                <input class="form-check-input me-2" type="checkbox" value="" id="registerCheck" checked
+                  aria-describedby="registerCheckHelpText" />
+                <label class="form-check-label" for="registerCheck">
+                  I have read and agree to the terms
+                </label>
+              </div>
+    
+                Submit button  
+              <button type="submit" (click)="onSubmit()" data-mdb-button-init data-mdb-ripple-init
+                class="btn btn-primary btn-block mb-3" [disabled]="userForm.invalid" >Sign in</button>
+            </form>
+          </div>
+        </div>
+          Pills content  
+    
+      </div> -->

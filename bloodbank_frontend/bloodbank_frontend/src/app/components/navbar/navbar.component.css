@@ -1,0 +1,83 @@
+
+@media (min-width: 991.98px) {
+    main {
+      padding-left: 240px;
+    }
+  }
+  .navbar{
+    background: rgb(247, 69, 69) !important;
+    /* color: white !important; */
+    /* padding: 10px; */
+  }
+  /* Sidebar */
+.nav-item .nav-link ,.navbar-brand {
+  color: white !important;
+}
+
+  .sidebar {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    padding: 58px 0 0; /* Height of navbar */
+    box-shadow: 0 2px 5px 0 rgb(0 0 0 / 5%), 0 2px 10px 0 rgb(0 0 0 / 5%);
+    width: 240px;
+    z-index: 600;
+  }
+  
+  @media (max-width: 991.98px) {
+    .sidebar {
+      width: 100%;
+    }
+  }
+  .sidebar .active {
+    border-radius: 5px;
+    box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%), 0 2px 10px 0 rgb(0 0 0 / 12%);
+  }
+  
+  .sidebar-sticky {
+    position: relative;
+    top: 0;
+    height: calc(100vh - 48px);
+    padding-top: 0.5rem;
+    overflow-x: hidden;
+    overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+  }
+
+  .active{
+    background: rgb(247, 69, 69) !important;
+    color: white !important;
+    border: 2px solid rgb(247, 69, 69) !important;
+  }
+
+
+
+  @media (max-width: 990px) {
+    #sidebarMenu{
+      
+      z-index: -1 !important;
+      /* background: #000 !important; */
+    }
+  }
+
+  .navbar {
+    z-index: 1 !important;
+  }
+
+
+  #sidebarMenu {
+    z-index: 1; /* Ensures the nav is on top */
+  }
+  
+  #sidebarMenu .list-group-item {
+    z-index: 2; /* Ensures the anchor tags are clickable */
+    position: relative; /* Makes z-index effective */
+    cursor: pointer;
+  }
+  
+  a {
+    cursor: pointer;
+  }
+
+
+  
